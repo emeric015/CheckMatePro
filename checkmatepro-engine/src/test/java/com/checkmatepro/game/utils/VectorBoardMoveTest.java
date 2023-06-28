@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-class VectorUtilsTest
+class VectorBoardMoveTest
 {
     @Nested
     @DisplayName("Empty Board")
