@@ -20,11 +20,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.checkmatepro</groupId>
-                <artifactId>checkmatepro-engine</artifactId>
-                <version>1.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-graphics</artifactId>
                 <version>20</version>
