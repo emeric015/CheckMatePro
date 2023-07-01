@@ -1,6 +1,9 @@
-package com.checkmatepro.game.utils;
+package com.checkmatepro.game;
 
 import com.checkmatepro.game.movement.Pair;
+import com.checkmatepro.game.utils.BoardUtils;
+import com.checkmatepro.game.utils.Vector;
+import com.checkmatepro.game.utils.VectorUtils;
 import com.checkmatepro.model.BoardFactory;
 import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;

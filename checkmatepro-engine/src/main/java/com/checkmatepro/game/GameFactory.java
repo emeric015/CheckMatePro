@@ -18,4 +18,9 @@ public class GameFactory
     {
         return new Game(BoardFactory.customBoard(board), EGameRule.FREE_MOVE);
     }
+
+    public IGameInterface newClassicCustomGame(String board)
+    {
+        return new Game(BoardFactory.customBoard(board), EGameRule.CLASSIC_GAME);
+    }
 }
