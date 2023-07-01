@@ -13,21 +13,23 @@ public enum VectorUtils
 {
     ;
 
-    public static Set<BoardPosition> applyVectorOnBoard(GameBoard board, EColor colorToPlay, BoardPosition startingPosition, Pair<Integer, Integer> axis)
+    public static Set<BoardPosition> applyVectorOnBoard(GameBoard board, BoardPosition startingPosition, Pair<Integer, Integer> axis)
     {
         Set<BoardPosition> destinations = new HashSet<>();
 
         BoardPosition nextPosition = computeNextPosition(startingPosition, axis);
-        Piece pieceOnPosition = BoardUtils.getPieceForPosition(board, nextPosition);
-        while (BoardUtils.isInBoard(nextPosition) && pieceOnPosition == null)
+        Piece pieceOnDestination = BoardUtils.getPieceForPosition(board, nextPosition);
+        while (BoardUtils.isInBoard(nextPosition) && pieceOnDestination == null)
         {
             destinations.add(nextPosition);
 
             nextPosition = computeNextPosition(nextPosition, axis);
-            pieceOnPosition = BoardUtils.getPieceForPosition(board, nextPosition);
+            pieceOnDestination = BoardUtils.getPieceForPosition(board, nextPosition);
         }
 
-        if (pieceOnPosition != null && pieceOnPosition.color() != colorToPlay)
+        EColor colorOfStartingPiece = board.getPieceAtPosition(startingPosition).map(Piece::color).orElse(null);
+
+        if (pieceOnDestination != null && pieceOnDestination.color() != colorOfStartingPiece)
         {
             destinations.add(nextPosition);
         }

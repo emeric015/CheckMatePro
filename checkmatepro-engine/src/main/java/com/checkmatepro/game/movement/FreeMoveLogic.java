@@ -9,8 +9,9 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
-public class ClassicMoveLogic implements IMoveLogicStrategy
+public class FreeMoveLogic implements IMoveLogicStrategy
 {
+
     @Override
     public Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin)
     {
@@ -33,14 +34,8 @@ public class ClassicMoveLogic implements IMoveLogicStrategy
     @Override
     public boolean requestAndDoMove(GameBoard board, BoardPosition origin, BoardPosition requestedDestination)
     {
-        if (getLegalDestinations(board, origin).contains(requestedDestination))
-        {
-            board.movePieceTo(origin, requestedDestination);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        board.movePieceTo(origin, requestedDestination);
+
+        return true;
     }
 }

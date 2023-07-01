@@ -63,6 +63,11 @@ public class BoardFactory
                         + "N,6,7,B/R,7,7,B/P,0,6,B/P,1,6,B/P,2,6,B/P,3,6,B/P,4,6,B/P,5,6,B/P,6,6,B/P,7,6,B");
     }
 
+    public static GameBoard customBoard(String board)
+    {
+        return parseBoard(board);
+    }
+
     public static GameBoard emptyBoard()
     {
         return new GameBoard(new HashSet<>());

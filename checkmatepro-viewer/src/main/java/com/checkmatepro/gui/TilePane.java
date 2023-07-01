@@ -1,5 +1,6 @@
 package com.checkmatepro.gui;
 
+import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.pieces.EColor;
 import com.checkmatepro.model.pieces.Piece;
 import javafx.geometry.Pos;
@@ -11,38 +12,50 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.io.InputStream;
-import java.util.Optional;
 
 public class TilePane extends StackPane
 {
     private static final int TILE_SIZE = 40;
-    private static final int PIECE_SIZE = 34;
 
-    private static final int CIRCLE_SIZE = 5;
+    private static final int CIRCLE_SIZE = 7;
 
     private final Rectangle selectionRectangle = new Rectangle(TILE_SIZE, TILE_SIZE, new Color(1, 0, 0, 0.5));
 
-    private final Circle destinationCircle = new Circle(CIRCLE_SIZE, new Color(0.1, 0.1, 0.1, 0.5));
+    private final Circle destinationCircle = new Circle(CIRCLE_SIZE, new Color(0.1, 0.1, 0.1, 0.7));
 
-    public TilePane(Optional<Piece> piece, EColor color)
+    private final BoardPosition position;
+    private Piece piece;
+
+    private final ImageView pieceImageView = new ImageView();
+
+    public TilePane(EColor color, BoardPosition position)
     {
         super();
 
-        buildPane(piece, color);
+        this.position = position;
+
+        initTile(color);
     }
 
-    private void buildPane(Optional<Piece> piece, EColor color)
+    public BoardPosition getPosition()
+    {
+        return position;
+    }
+
+    public void setPiece(Piece piece)
+    {
+        this.piece = piece;
+        updateTile();
+    }
+
+    private void initTile(EColor color)
     {
         Image tileImage = new Image(getTileInputStream(color), TILE_SIZE, TILE_SIZE, false, false);
         getChildren().add(new ImageView(tileImage));
 
-        if (piece.isPresent())
-        {
-            Image pieceImage = new Image(getImageInputStream(piece.get()), PIECE_SIZE, PIECE_SIZE, false, false);
-            getChildren().add(new ImageView(pieceImage));
-        }
-
         setAlignment(Pos.CENTER);
+
+        getChildren().add(pieceImageView);
 
         getChildren().add(selectionRectangle);
         selectionRectangle.setVisible(false);
@@ -51,20 +64,24 @@ public class TilePane extends StackPane
         destinationCircle.setVisible(false);
     }
 
+    private void updateTile()
+    {
+        if (piece != null)
+        {
+            Image pieceImage = EPieceImage.of(piece.type(), piece.color()).getImage();
+            pieceImageView.setImage(pieceImage);
+        }
+        else
+        {
+            pieceImageView.setImage(null);
+        }
+    }
+
     private InputStream getTileInputStream(EColor color)
     {
-
         String squareColor = color == EColor.WHITE ? "light" : "dark";
 
         return getClass().getClassLoader().getResourceAsStream("square_brown_" + squareColor + ".png");
-    }
-
-    private InputStream getImageInputStream(Piece piece)
-    {
-        String prefix = piece.color() == EColor.WHITE ? "W" : "B";
-        String type = piece.type().name().toUpperCase();
-
-        return getClass().getClassLoader().getResourceAsStream(prefix + "_" + type + ".png");
     }
 
     public void select()
