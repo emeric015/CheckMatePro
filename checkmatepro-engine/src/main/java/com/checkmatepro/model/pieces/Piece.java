@@ -8,6 +8,8 @@ public class Piece implements IMovable
     private BoardPosition position;
     private final EColor color;
 
+    private boolean hasMoved = false;
+
     private Piece(EPieceType type, BoardPosition position, EColor color)
     {
         this.type = type;
@@ -33,6 +35,16 @@ public class Piece implements IMovable
     public EColor color()
     {
         return color;
+    }
+
+    public boolean hasMoved()
+    {
+        return hasMoved;
+    }
+
+    public void setHasMoved(boolean hasMoved)
+    {
+        this.hasMoved = hasMoved;
     }
 
     public static class Builder

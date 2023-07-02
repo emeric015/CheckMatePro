@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public final class BishopPieceMoveStrategy implements IPieceMoveStrategy, UnlimitedDistancePiece
+public final class BishopPieceMoveStrategy implements IPieceMoveStrategy, DirectionalPiece
 {
     @Override
     public Set<BoardPosition> getLegalDestinations(GameBoard board, Piece piece)

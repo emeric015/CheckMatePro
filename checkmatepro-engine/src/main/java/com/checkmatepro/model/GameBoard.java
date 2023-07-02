@@ -40,6 +40,7 @@ public class GameBoard
             pieces.remove(piece);
             piece.setPosition(destination);
             pieces.add(piece);
+            piece.setHasMoved(true);
         });
     }
 
