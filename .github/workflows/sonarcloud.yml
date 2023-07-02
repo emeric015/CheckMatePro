@@ -58,7 +58,6 @@ jobs:
             # mandatory
             -Dsonar.projectKey=checkmate-pro_checkmate-pro
             -Dsonar.organization=checkmate-pro
-            -Dsonar.sources=checkmatepro-engine/src
             -Dsonar.scm.provider=git
             -Dsonar.verbose=true
             # When you need the analysis to take place in a directory other than the one from which it was launched
