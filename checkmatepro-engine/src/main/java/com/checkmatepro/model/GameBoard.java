@@ -1,26 +1,27 @@
 package com.checkmatepro.model;
 
+import com.checkmatepro.game.BoardPrinter;
 import com.checkmatepro.model.pieces.EColor;
 import com.checkmatepro.model.pieces.Piece;
 
+import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 public class GameBoard
 {
     public static final int SIZE = 8;
-    private final Set<Piece> pieces;
+    private final Map<BoardPosition, Piece> piecesByPosition;
 
     private EColor colorToPlay = EColor.WHITE;
 
-    protected GameBoard(Set<Piece> pieces)
+    protected GameBoard(Map<BoardPosition, Piece> piecesByPosition)
     {
-        this.pieces = pieces;
+        this.piecesByPosition = piecesByPosition;
     }
 
-    public Set<Piece> getPieces()
+    public Map<BoardPosition, Piece> getPiecesByPosition()
     {
-        return pieces;
+        return piecesByPosition;
     }
 
     public EColor colorToPlay()
@@ -30,24 +31,23 @@ public class GameBoard
 
     public void movePieceTo(BoardPosition origin, BoardPosition destination)
     {
-        Optional<Piece> pieceOnOrigin = getPieceAtPosition(origin);
-
-        pieceOnOrigin.ifPresent(piece ->
+        if (piecesByPosition.containsKey(origin))
         {
-            Optional<Piece> pieceOnDestination = getPieceAtPosition(destination);
-            pieceOnDestination.ifPresent(pieces::remove);
+            Piece pieceToMove = piecesByPosition.get(origin);
+            piecesByPosition.put(destination, pieceToMove);
+            piecesByPosition.remove(origin);
+            pieceToMove.setHasMoved(true);
+        }
+    }
 
-            pieces.remove(piece);
-            piece.setPosition(destination);
-            pieces.add(piece);
-            piece.setHasMoved(true);
-        });
+    @Override
+    protected GameBoard clone()
+    {
+        return new GameBoard(Map.copyOf(piecesByPosition));
     }
 
     public Optional<Piece> getPieceAtPosition(BoardPosition position)
     {
-        return pieces.stream()
-                .filter(piece -> piece.position().equals(position))
-                .findAny();
+        return Optional.ofNullable(piecesByPosition.get(position));
     }
 }

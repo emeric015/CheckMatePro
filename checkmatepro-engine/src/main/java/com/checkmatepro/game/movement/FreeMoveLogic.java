@@ -8,6 +8,7 @@ import com.checkmatepro.model.pieces.Piece;
 import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class FreeMoveLogic implements IMoveLogicStrategy
 {
@@ -15,20 +16,15 @@ public class FreeMoveLogic implements IMoveLogicStrategy
     @Override
     public Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin)
     {
-        Optional<Piece> pieceOnOrigin = board.getPieceAtPosition(origin);
-
-        if (pieceOnOrigin.isPresent())
+        return board.getPieceAtPosition(origin).map(piece ->
         {
-            IPieceMoveStrategy moveStrategy = IPieceMoveStrategy.of(pieceOnOrigin.get().type());
+            IPieceMoveStrategy moveStrategy = IPieceMoveStrategy.of(piece.type());
 
-            return moveStrategy.getLegalDestinations(board, pieceOnOrigin.get());
-        }
-        else
-        {
-            return Collections.emptySet();
-        }
-
-        //TODO handle check cases
+            //TODO handle check cases
+            return moveStrategy.getLegalDestinations(board, origin).stream()
+                    .filter(destination -> !wouldBeInCheck(board, origin, destination))
+                    .collect(Collectors.toSet());
+        }).orElse(Collections.emptySet());
     }
 
     @Override
@@ -37,5 +33,17 @@ public class FreeMoveLogic implements IMoveLogicStrategy
         board.movePieceTo(origin, requestedDestination);
 
         return true;
+    }
+
+    @Override
+    public boolean wouldBeInCheck(GameBoard board, BoardPosition origin, BoardPosition supposedDestination)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean inInCheck(GameBoard board)
+    {
+        return false;
     }
 }

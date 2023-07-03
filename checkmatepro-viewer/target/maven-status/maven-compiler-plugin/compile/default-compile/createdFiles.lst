@@ -1,4 +1,5 @@
 com\checkmatepro\gui\TilePane.class
-com\checkmatepro\gui\BoardPane.class
 com\checkmatepro\gui\Viewer.class
+com\checkmatepro\gui\BoardGamePane.class
+com\checkmatepro\gui\EPieceImage.class
 module-info.class

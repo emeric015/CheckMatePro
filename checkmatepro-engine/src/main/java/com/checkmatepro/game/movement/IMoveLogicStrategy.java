@@ -20,4 +20,8 @@ public interface IMoveLogicStrategy
     Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin);
 
     boolean requestAndDoMove(GameBoard board, BoardPosition origin, BoardPosition requestedDestination);
+
+    boolean wouldBeInCheck(GameBoard board, BoardPosition origin, BoardPosition supposedDestination);
+
+    boolean inInCheck(GameBoard board);
 }

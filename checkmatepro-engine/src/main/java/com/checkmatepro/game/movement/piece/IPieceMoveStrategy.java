@@ -3,7 +3,6 @@ package com.checkmatepro.game.movement.piece;
 import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;
 import com.checkmatepro.model.pieces.EPieceType;
-import com.checkmatepro.model.pieces.Piece;
 
 import java.util.Set;
 
@@ -22,5 +21,5 @@ public interface IPieceMoveStrategy
                 };
     }
 
-    Set<BoardPosition> getLegalDestinations(GameBoard board, Piece piece);
+    Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin);
 }

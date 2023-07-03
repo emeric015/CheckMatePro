@@ -15,21 +15,21 @@ import java.util.Set;
 public final class KingPieceMoveStrategy implements IPieceMoveStrategy, DirectionalPiece
 {
     @Override
-    public Set<BoardPosition> getLegalDestinations(GameBoard board, Piece piece)
+    public Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin)
     {
         Set<BoardPosition> destinations = new HashSet<>();
 
-        getPossibleDirections().forEach(direction -> destinations.addAll(VectorUtils.applyVectorOnBoard(board, piece.position(), direction, 1)));
+        getPossibleDirections().forEach(direction -> destinations.addAll(VectorUtils.applyVectorOnBoard(board, origin, direction, 1)));
 
-        if (piece.hasMoved())
+        if (board.getPieceAtPosition(origin).orElseThrow().hasMoved())
         {
-            destinations.addAll(getCastleDestination(board, piece));
+            destinations.addAll(getCastleDestination(board, origin));
         }
 
         return destinations;
     }
 
-    private Set<BoardPosition> getCastleDestination(GameBoard board, Piece piece)
+    private Set<BoardPosition> getCastleDestination(GameBoard board, BoardPosition origin)
     {
         //TODO
         return new HashSet<>();

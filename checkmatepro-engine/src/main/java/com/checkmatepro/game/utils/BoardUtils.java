@@ -18,9 +18,6 @@ public class BoardUtils
 
     public static Piece getPieceForPosition(GameBoard board, BoardPosition position)
     {
-        return board.getPieces().stream()
-                .filter(piece -> piece.position().equals(position))
-                .findAny()
-                .orElse(null);
+        return board.getPiecesByPosition().get(position);
     }
 }

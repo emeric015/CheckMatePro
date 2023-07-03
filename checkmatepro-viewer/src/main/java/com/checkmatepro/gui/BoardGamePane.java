@@ -53,10 +53,10 @@ public class BoardGamePane extends GridPane
     {
         tiles.values().forEach(tile -> tile.setPiece(null));
 
-        for (Piece piece : gameInterface.getBoard().getPieces())
+        for (Map.Entry<BoardPosition, Piece> pieceByPosition : gameInterface.getBoard().getPiecesByPosition().entrySet())
         {
-            TilePane tile = tiles.get(piece.position());
-            tile.setPiece(piece);
+            TilePane tile = tiles.get(pieceByPosition.getKey());
+            tile.setPiece(pieceByPosition.getValue());
         }
 
         tiles.values().forEach(tile -> tile.setPossibleDestination(false));
@@ -73,11 +73,12 @@ public class BoardGamePane extends GridPane
     {
         if (selectedTile.isPresent())
         {
-            Optional<Piece> pieceOnPreviousSelectedTile = gameInterface.getPieceAtPosition(selectedTile.get().getPosition());
-            pieceOnPreviousSelectedTile.ifPresent(value ->
+            BoardPosition position = selectedTile.get().getPosition();
+            Optional<Piece> pieceOnPreviousSelectedTile = gameInterface.getPieceAtPosition(position);
+            pieceOnPreviousSelectedTile.ifPresent(piece ->
             {
-                gameInterface.requestMove(value.position(), tilePane.getPosition());
-                tilePane.setPiece(pieceOnPreviousSelectedTile.get());
+                gameInterface.requestMove(position, tilePane.getPosition());
+//                tilePane.setPiece(pieceOnPreviousSelectedTile.get());
             });
             selectedTile.get().unselect();
             selectedTile = Optional.empty();

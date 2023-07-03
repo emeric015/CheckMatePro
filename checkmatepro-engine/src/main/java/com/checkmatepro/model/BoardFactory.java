@@ -5,9 +5,8 @@ import com.checkmatepro.model.pieces.EPieceType;
 import com.checkmatepro.model.pieces.Piece;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class BoardFactory
 {
@@ -21,32 +20,34 @@ public class BoardFactory
 
     public static GameBoard parseBoard(String board)
     {
-        Set<Piece> pieces = new HashSet<>();
+        Map<BoardPosition, Piece> pieces = new HashMap<>();
 
         Arrays.stream(board.split("/"))
                 .map(BoardFactory::parsePiece)
-                .forEach(pieces::add);
+                .forEach(entry -> pieces.put(entry.getKey(), entry.getValue()));
 
         return new GameBoard(pieces);
     }
 
-    public static Piece parsePiece(String piece)
+    public static Map.Entry<BoardPosition, Piece> parsePiece(String pieceAsText)
     {
-        if (piece != null)
+        if (pieceAsText != null)
         {
-            String[] elements = piece.split(",");
+            String[] elements = pieceAsText.split(",");
 
             if (elements.length == 4)
             {
-                return new Piece.Builder()
+                BoardPosition position = new BoardPosition(Integer.parseInt(elements[1]), Integer.parseInt(elements[2]));
+                Piece piece = new Piece.Builder()
                         .type(letterToPieceType.get(elements[0]))
-                        .position(new BoardPosition(Integer.parseInt(elements[1]), Integer.parseInt(elements[2])))
                         .color("W".equals(elements[3]) ? EColor.WHITE : EColor.BLACK)
                         .build();
+
+                return Map.entry(position, piece);
             }
             else
             {
-                throw new IllegalArgumentException("Invalid element : " + piece);
+                throw new IllegalArgumentException("Invalid element : " + pieceAsText);
             }
         }
         else
@@ -70,6 +71,6 @@ public class BoardFactory
 
     public static GameBoard emptyBoard()
     {
-        return new GameBoard(new HashSet<>());
+        return new GameBoard(new HashMap<>());
     }
 }

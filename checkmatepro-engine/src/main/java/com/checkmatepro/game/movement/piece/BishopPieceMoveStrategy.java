@@ -5,7 +5,6 @@ import com.checkmatepro.game.utils.Vector;
 import com.checkmatepro.game.utils.VectorUtils;
 import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;
-import com.checkmatepro.model.pieces.Piece;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -15,11 +14,11 @@ import java.util.Set;
 public final class BishopPieceMoveStrategy implements IPieceMoveStrategy, DirectionalPiece
 {
     @Override
-    public Set<BoardPosition> getLegalDestinations(GameBoard board, Piece piece)
+    public Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin)
     {
         Set<BoardPosition> destinations = new HashSet<>();
 
-        getPossibleDirections().forEach(direction -> destinations.addAll(VectorUtils.applyVectorOnBoard(board, piece.position(), direction)));
+        getPossibleDirections().forEach(direction -> destinations.addAll(VectorUtils.applyVectorOnBoard(board, origin, direction)));
 
         return destinations;
     }

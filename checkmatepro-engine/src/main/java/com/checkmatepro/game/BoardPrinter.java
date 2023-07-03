@@ -4,6 +4,8 @@ import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;
 import com.checkmatepro.model.pieces.Piece;
 
+import java.util.Optional;
+
 public class BoardPrinter
 {
     public static void printBoard(GameBoard board)
@@ -11,15 +13,13 @@ public class BoardPrinter
         StringBuilder builder = new StringBuilder();
 
 
-        for (int i = 0; i < GameBoard.SIZE; i++)
+        for (int line = GameBoard.SIZE - 1; line >= 0; line--)
         {
-            for (int j = 0; j < GameBoard.SIZE; j++)
+            for (int column = 0; column < GameBoard.SIZE; column++)
             {
-                BoardPosition position = new BoardPosition(j, i);
+                BoardPosition position = new BoardPosition(column, line);
 
-                board.getPieces().stream()
-                        .filter(piece -> piece.position().equals(position))
-                        .findAny()
+                Optional.ofNullable(board.getPiecesByPosition().get(position))
                         .ifPresentOrElse(piece -> builder.append(BoardPrinter.pieceToString(piece)), () -> builder.append("_"));
             }
 
