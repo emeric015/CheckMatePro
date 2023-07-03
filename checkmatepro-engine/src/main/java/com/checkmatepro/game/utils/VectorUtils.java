@@ -23,14 +23,14 @@ public enum VectorUtils
         Set<BoardPosition> destinations = new HashSet<>();
 
         BoardPosition nextPosition = computeNextPosition(startingPosition, axis);
-        Piece pieceOnDestination = BoardUtils.getPieceForPosition(board, nextPosition);
+        Piece pieceOnDestination = board.getPieceAtPosition(nextPosition).orElse(null);
         int currentDistance = 1;
         while (BoardUtils.isInBoard(nextPosition) && pieceOnDestination == null && currentDistance <= maxDistance)
         {
             destinations.add(nextPosition);
 
             nextPosition = computeNextPosition(nextPosition, axis);
-            pieceOnDestination = BoardUtils.getPieceForPosition(board, nextPosition);
+            pieceOnDestination = board.getPieceAtPosition(nextPosition).orElse(null);
             currentDistance++;
         }
 

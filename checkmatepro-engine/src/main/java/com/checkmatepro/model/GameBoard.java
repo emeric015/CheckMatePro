@@ -1,6 +1,7 @@
 package com.checkmatepro.model;
 
 import com.checkmatepro.game.BoardPrinter;
+import com.checkmatepro.game.utils.BoardUtils;
 import com.checkmatepro.model.pieces.EColor;
 import com.checkmatepro.model.pieces.Piece;
 
@@ -37,13 +38,9 @@ public class GameBoard
             piecesByPosition.put(destination, pieceToMove);
             piecesByPosition.remove(origin);
             pieceToMove.setHasMoved(true);
-        }
-    }
 
-    @Override
-    protected GameBoard clone()
-    {
-        return new GameBoard(Map.copyOf(piecesByPosition));
+            System.out.println(BoardUtils.toBoardStr(this));
+        }
     }
 
     public Optional<Piece> getPieceAtPosition(BoardPosition position)

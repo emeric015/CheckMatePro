@@ -10,6 +10,11 @@ import java.util.Map;
 
 public class BoardFactory
 {
+    private BoardFactory()
+    {
+
+    }
+
     private static final Map<String, EPieceType> letterToPieceType = Map.of(
             "K", EPieceType.KING,
             "Q", EPieceType.QUEEN,

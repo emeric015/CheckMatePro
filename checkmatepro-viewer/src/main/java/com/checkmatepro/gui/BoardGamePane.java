@@ -78,7 +78,6 @@ public class BoardGamePane extends GridPane
             pieceOnPreviousSelectedTile.ifPresent(piece ->
             {
                 gameInterface.requestMove(position, tilePane.getPosition());
-//                tilePane.setPiece(pieceOnPreviousSelectedTile.get());
             });
             selectedTile.get().unselect();
             selectedTile = Optional.empty();
