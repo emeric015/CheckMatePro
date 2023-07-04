@@ -52,6 +52,9 @@
                                     <formats>
                                         <format>XML</format>
                                     </formats>
+                                    <excludes>
+                                        <exclude>com/checkmatepro/gui/**</exclude>
+                                    </excludes>
                                 </configuration>
                             </execution>
                         </executions>
