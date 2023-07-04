@@ -41,6 +41,7 @@ jobs:
     - name: Sonarcloud analysis
       run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=com.checkmatepro:checkmatepro-app
 
+
   publish-job:
         name: Package app
         runs-on: ubuntu-latest
