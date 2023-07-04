@@ -39,7 +39,7 @@ jobs:
       run: mvn -B package --file pom.xml
 
     - name: SonarCloud analysis
-      run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=com.checkmatepro:checkmatepro-app
+      run: mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=emeric015_CheckMatePro
 
   publish-job:
         name: Package app
