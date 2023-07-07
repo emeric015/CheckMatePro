@@ -1,5 +1,6 @@
 package com.checkmatepro.model;
 
+import com.checkmatepro.logging.LogUtils;
 import com.checkmatepro.model.pieces.EColor;
 import com.checkmatepro.model.pieces.EPieceType;
 import com.checkmatepro.model.pieces.Piece;
@@ -52,12 +53,14 @@ public class BoardFactory
             }
             else
             {
-                throw new IllegalArgumentException("Invalid element : " + pieceAsText);
+                LogUtils.getLogger().error("Invalid element : " + pieceAsText);
+                throw new IllegalArgumentException();
             }
         }
         else
         {
-            throw new IllegalArgumentException("The input element is null");
+            LogUtils.getLogger().error("The input element is null");
+            throw new IllegalArgumentException();
         }
     }
 

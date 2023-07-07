@@ -1,5 +1,6 @@
 package com.checkmatepro.game;
 
+import com.checkmatepro.logging.LogUtils;
 import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;
 import com.checkmatepro.model.pieces.Piece;
@@ -26,7 +27,7 @@ public class BoardPrinter
             builder.append("\n");
         }
 
-        System.out.println(builder);
+        LogUtils.getLogger().info(builder);
     }
 
     private static String pieceToString(Piece piece)
@@ -59,6 +60,7 @@ public class BoardPrinter
             }
         }
 
-        throw new IllegalArgumentException("Unknown piece");
+        LogUtils.getLogger().error("Unknown piece type : " + piece.type());
+        throw new IllegalArgumentException();
     }
 }

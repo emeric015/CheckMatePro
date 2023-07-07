@@ -1,7 +1,7 @@
 package com.checkmatepro.model;
 
-import com.checkmatepro.game.BoardPrinter;
 import com.checkmatepro.game.utils.BoardUtils;
+import com.checkmatepro.logging.LogUtils;
 import com.checkmatepro.model.pieces.EColor;
 import com.checkmatepro.model.pieces.Piece;
 
@@ -32,14 +32,16 @@ public class GameBoard
 
     public void movePieceTo(BoardPosition origin, BoardPosition destination)
     {
-        if (piecesByPosition.containsKey(origin))
+        if (!origin.equals(destination) && piecesByPosition.containsKey(origin))
         {
             Piece pieceToMove = piecesByPosition.get(origin);
             piecesByPosition.put(destination, pieceToMove);
             piecesByPosition.remove(origin);
             pieceToMove.setHasMoved(true);
 
-            System.out.println(BoardUtils.toBoardStr(this));
+            colorToPlay = colorToPlay.getOpposite();
+
+            LogUtils.getLogger().info(BoardUtils.toBoardStr(this));
         }
     }
 
