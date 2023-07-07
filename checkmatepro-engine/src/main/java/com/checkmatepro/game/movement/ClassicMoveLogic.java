@@ -16,7 +16,6 @@ public class ClassicMoveLogic implements IMoveLogicStrategy
     public Set<BoardPosition> getLegalDestinations(GameBoard board, BoardPosition origin)
     {
         return board.getPieceAtPosition(origin)
-                .filter(piece -> piece.color().equals(board.colorToPlay()))
                 .map(piece ->
                 {
                     IPieceMoveStrategy moveStrategy = IPieceMoveStrategy.of(piece.type());
