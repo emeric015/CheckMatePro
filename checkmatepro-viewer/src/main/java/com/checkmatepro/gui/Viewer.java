@@ -13,7 +13,10 @@ public class Viewer extends Application
     {
         stage.setTitle("CheckMate Pro");
 
-        IGameInterface game = new GameFactory().newFreeMoveCustomGame("R,0,0,W/P,6,6,B/P,0,1,W/N,6,7,B/P,4,6,B/K,4,7,B/P,2,6,B/B,2,7,B/P,0,6,B/R,0,7,B/R,7,0,B/P,7,1,W/B,5,0,W/P,5,1,W/P,3,1,W/N,1,0,W/Q,7,6,W/P,1,1,W/P,5,6,B/B,5,7,B/Q,1,3,B/P,3,6,B/N,1,4,W/P,1,6,B/N,1,7,B/P,6,1,W/K,4,0,W/P,4,1,W/B,2,0,W/P,2,1,W/");
+
+        String boardStr = "P,4,4,W/N,6,7,B/P,4,6,B/P,2,4,W/K,4,7,B/P,2,6,W/P,0,6,W/P,7,1,W/P,5,2,W/N,1,0,W/Q,7,6,W/B,3,2,B/P,3,3,B/B,1,1,W/B,5,7,B/Q,1,3,B/P,3,5,W/N,1,4,W/P,1,5,B/N,1,7,B/P,6,0,B/B,2,0,W/K,4,2,W/R,6,4,B/R,2,1,W/";
+
+        IGameInterface game = new GameFactory().newFreeMoveCustomGame(boardStr);
 //        IGameInterface game = new GameFactory().newFreeMoveGame();
 
         BoardGamePane boardGamePane = new BoardGamePane(game);

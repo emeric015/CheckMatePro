@@ -39,7 +39,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -56,7 +56,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -73,7 +73,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -90,7 +90,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -107,7 +107,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -124,7 +124,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -141,7 +141,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -158,7 +158,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -176,7 +176,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -194,7 +194,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
     }
 
@@ -219,7 +219,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -237,7 +237,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -256,7 +256,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
 
         @Test
@@ -272,7 +272,7 @@ class VectorBoardMoveTest
 
             Set<BoardPosition> positions = VectorUtils.applyVectorOnBoard(board, boardPosition, axis);
 
-            Assertions.assertEquals(expected, positions);
+            Assertions.assertEquals(expected, positions, BoardUtils.getBoardAsString(board));
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.checkmatepro.model;
 
-import com.checkmatepro.game.utils.BoardUtils;
+import com.checkmatepro.game.utils.BoardParser;
+import com.checkmatepro.game.utils.BoardPrinter;
 import com.checkmatepro.logging.LogUtils;
 import com.checkmatepro.model.pieces.EColor;
 import com.checkmatepro.model.pieces.Piece;
@@ -41,7 +42,8 @@ public class GameBoard
 
             colorToPlay = colorToPlay.getOpposite();
 
-            LogUtils.getLogger().info(BoardUtils.toBoardStr(this));
+            LogUtils.getLogger().info(BoardParser.parseBoardToString(this));
+            BoardPrinter.printBoard(this);
         }
     }
 

@@ -1,10 +1,11 @@
 package com.checkmatepro.game.utils;
 
+import com.checkmatepro.logging.LogUtils;
 import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;
 import com.checkmatepro.model.pieces.Piece;
 
-import java.util.Map;
+import java.util.Optional;
 
 public class BoardUtils
 {
@@ -18,38 +19,57 @@ public class BoardUtils
                 && position.line() >= 0 && position.line() < GameBoard.SIZE;
     }
 
-    public static String toBoardStr(GameBoard board)
+    public static String getBoardAsString(GameBoard board)
     {
-        StringBuilder builder = new StringBuilder();
+        StringBuilder builder = new StringBuilder("\n");
 
-        for (Map.Entry<BoardPosition, Piece> pieceEntry : board.getPiecesByPosition().entrySet())
+        for (int line = GameBoard.SIZE - 1; line >= 0; line--)
         {
-            builder.append(toPieceStr(pieceEntry.getKey(), pieceEntry.getValue())).append('/');
+            for (int column = 0; column < GameBoard.SIZE; column++)
+            {
+                BoardPosition position = new BoardPosition(column, line);
+
+                Optional.ofNullable(board.getPiecesByPosition().get(position))
+                        .ifPresentOrElse(piece -> builder.append(pieceToString(piece)), () -> builder.append("_"));
+            }
+
+            builder.append("\n");
         }
 
         return builder.toString();
     }
 
-    private static String toPieceStr(BoardPosition boardPosition, Piece piece)
+    private static String pieceToString(Piece piece)
     {
-        char charPiece = switch (piece.type())
-                {
+        switch (piece.type())
+        {
+            case PAWN ->
+            {
+                return "P";
+            }
+            case KING ->
+            {
+                return "K";
+            }
+            case QUEEN ->
+            {
+                return "Q";
+            }
+            case KNIGHT ->
+            {
+                return "N";
+            }
+            case ROOK ->
+            {
+                return "R";
+            }
+            case BISHOP ->
+            {
+                return "B";
+            }
+        }
 
-                    case PAWN -> 'P';
-                    case KNIGHT -> 'N';
-                    case BISHOP -> 'B';
-                    case ROOK -> 'R';
-                    case QUEEN -> 'Q';
-                    case KING -> 'K';
-                };
-
-        char charColor = switch (piece.color())
-                {
-
-                    case WHITE -> 'W';
-                    case BLACK -> 'B';
-                };
-
-        return String.valueOf(charPiece) + ',' + boardPosition.column() + ',' + boardPosition.line() + ',' + charColor;
+        LogUtils.getLogger().error("Unknown piece type : " + piece.type());
+        throw new IllegalArgumentException();
     }
 }

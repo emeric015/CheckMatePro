@@ -22,6 +22,7 @@ com\checkmatepro\game\utils\BoardUtils.class
 com\checkmatepro\model\BoardFactory.class
 com\checkmatepro\game\EGameRule.class
 com\checkmatepro\game\movement\Pair.class
+com\checkmatepro\logging\LogUtils.class
 com\checkmatepro\model\BoardPosition.class
 com\checkmatepro\game\movement\PieceMove.class
 com\checkmatepro\game\movement\piece\IPieceMoveStrategy.class
@@ -31,3 +32,4 @@ com\checkmatepro\game\movement\piece\KnightPieceMoveStrategy.class
 com\checkmatepro\model\GameBoard.class
 com\checkmatepro\game\movement\IMoveLogicStrategy.class
 com\checkmatepro\game\movement\piece\BishopPieceMoveStrategy.class
+com\checkmatepro\game\utils\BoardUtils$1.class

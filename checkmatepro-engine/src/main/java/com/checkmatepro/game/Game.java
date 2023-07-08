@@ -1,6 +1,7 @@
 package com.checkmatepro.game;
 
 import com.checkmatepro.game.movement.IMoveLogicStrategy;
+import com.checkmatepro.game.utils.BoardPrinter;
 import com.checkmatepro.model.BoardFactory;
 import com.checkmatepro.model.BoardPosition;
 import com.checkmatepro.model.GameBoard;

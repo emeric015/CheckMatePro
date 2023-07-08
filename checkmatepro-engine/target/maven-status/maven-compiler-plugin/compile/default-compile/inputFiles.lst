@@ -17,6 +17,7 @@ D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmat
 D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\module-info.java
 D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmatepro\game\movement\FreeMoveLogic.java
 D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmatepro\game\IGameInterface.java
+D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmatepro\logging\LogUtils.java
 D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmatepro\game\movement\piece\QueenPieceMoveStrategy.java
 D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmatepro\model\BoardPosition.java
 D:\Intellij\Projects\CheckMatePro\checkmatepro-engine\src\main\java\com\checkmatepro\game\movement\ClassicMoveLogic.java
